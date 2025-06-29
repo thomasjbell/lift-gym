@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     // Send email to gym owner
     await resend.emails.send({
       from: 'Lift Gym <thomas@thomasjbell.co.uk>', // Replace with your domain
-      to: [process.env.CONTACT_EMAIL || 'thomas.bell.fusion@gmail.com'],
+      to: [process.env.CONTACT_EMAIL || 'leductaep@gmail.com'],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
