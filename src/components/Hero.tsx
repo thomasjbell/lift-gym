@@ -1,18 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Heart, Smile } from "lucide-react";
+import Image from "next/image";
+
 
 export default function Hero() {
   return (
     <section className="relative bg-black text-white min-h-screen flex items-center">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 z-10" />
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/70 z-10" />
+      <Image src="/lift-gym-hero.jpg" alt="Hero Image" fill className="object-cover">
+
+      </Image>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-4xl">
@@ -22,15 +20,15 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-            <div className="flex items-center space-x-6 mb-8">
+            <div className="flex items-center space-x-6 mb-2">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="flex items-center space-x-2 text-gray-300"
               >
-                <Users className="h-5 w-5" />
-                <span className="text-sm font-medium">Personal</span>
+                <Users className="h-6 w-6" />
+                <span className="text-lg font-medium">Personal</span>
               </motion.div>
               <motion.div
                 initial={{ scale: 0 }}
@@ -38,8 +36,8 @@ export default function Hero() {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="flex items-center space-x-2 text-gray-300"
               >
-                <Heart className="h-5 w-5" />
-                <span className="text-sm font-medium">Supportive</span>
+                <Heart className="h-6 w-6" />
+                <span className="text-lg font-medium">Supportive</span>
               </motion.div>
               <motion.div
                 initial={{ scale: 0 }}
@@ -47,8 +45,8 @@ export default function Hero() {
                 transition={{ delay: 0.7, duration: 0.5 }}
                 className="flex items-center space-x-2 text-gray-300"
               >
-                <Smile className="h-5 w-5" />
-                <span className="text-sm font-medium">Friendly</span>
+                <Smile className="h-6 w-6" />
+                <span className="text-lg font-medium">Friendly</span>
               </motion.div>
             </div>
           </motion.div>

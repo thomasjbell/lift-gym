@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Dumbbell, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,13 +13,14 @@ export default function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="bg-black/95 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50"
+      className="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <Dumbbell className="h-8 w-8 text-white" />
-            <span className="text-xl font-bold text-white">Lift Gym</span>
+            <Image src="/logo.webp" alt="Logo" width={50} height={50}></Image>
+            <span className="text-2xl font-bold text-white">Lift Gym</span>
+           
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,6 +48,12 @@ export default function Header() {
               className="text-white hover:text-gray-300 transition-colors"
             >
               Contact
+            </Link>
+            <Link
+              href="/faqs"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              FAQ's
             </Link>
           </nav>
 

@@ -28,7 +28,7 @@ export default function Footer() {
               <span className="text-2xl font-bold">Lift Gym</span>
             </Link>
             <p className="text-gray-300 mb-4">
-              Personal, supportive, friendly. <br /> Transform your fitness journey
+              Personal, supportive, friendly. Transform your gym journey
               with us.
             </p>
             <div className="flex space-x-4">
@@ -53,6 +53,32 @@ export default function Footer() {
               >
                 <Twitter className="h-5 w-5" />
               </motion.a>
+            </div>
+          </motion.div>
+
+          
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2 text-gray-300">
+                <MapPin className="h-4 w-4" />
+                <span>123 Fitness St, Gym City</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-300">
+                <Phone className="h-4 w-4" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-2 text-gray-300">
+                <Mail className="h-4 w-4" />
+                <span>hello@liftgym.com</span>
+              </div>
             </div>
           </motion.div>
 
@@ -99,31 +125,9 @@ export default function Footer() {
               </li>
             </ul>
           </motion.div>
-
-          {/* Contact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-gray-300">
-                <MapPin className="h-4 w-4" />
-                <span>123 Fitness St, Gym City</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Phone className="h-4 w-4" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Mail className="h-4 w-4" />
-                <span>hello@liftgym.com</span>
-              </div>
-            </div>
-          </motion.div>
         </div>
+
+        
 
         <motion.div
           initial={{ opacity: 0 }}
