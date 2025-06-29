@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     // Send email to gym owner
     await resend.emails.send({
-      from: 'Lift Gym <onboarding@resend.dev>', // Replace with your domain
+      from: 'Lift Gym <testing@equalab.uk>', // Replace with your domain
       to: [process.env.CONTACT_EMAIL || 'leductaep@gmail.com'],
       subject: `Contact Form: ${subject}`,
       html: `
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
     // Send auto-reply to user
     await resend.emails.send({
-      from: 'Lift Gym <onboarding@resend.dev>', // Replace with your domain
+      from: 'Lift Gym <testing@equalab.uk>', // Replace with your domain
       to: [email],
       subject: 'Thank you for contacting Lift Gym',
       html: `
