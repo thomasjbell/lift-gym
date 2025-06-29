@@ -1,23 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, subject, message } = await request.json();
 
-    // Create transporter (using Gmail as example) - FIXED: createTransport not createTransporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    // Email to gym owner
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+    // Send email to gym owner
+    await resend.emails.send({
+      from: 'Lift Gym <thomas@thomasjbell.co.uk>', // Replace with your domain
+      to: [process.env.CONTACT_EMAIL || 'thomas.bell.fusion@gmail.com'],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -30,16 +23,16 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    // Auto-reply to user
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
+    // Send auto-reply to user
+    await resend.emails.send({
+      from: 'Lift Gym <thomas@thomasjbell.co.uk>', // Replace with your domain
+      to: [email],
       subject: 'Thank you for contacting Lift Gym',
       html: `
         <h2>Thank you for your message!</h2>
         <p>Hi ${name},</p>
         <p>Thank you for reaching out to Lift Gym. We've received your message and will get back to you within 24 hours.</p>
-        <p>Your message:</p>
+        <p><strong>Your message:</strong></p>
         <blockquote style="border-left: 4px solid #ccc; margin: 0; padding-left: 16px; color: #666;">
           ${message.replace(/\n/g, '<br>')}
         </blockquote>
