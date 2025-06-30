@@ -3,14 +3,16 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, Heart, Smile } from "lucide-react";
 import Image from "next/image";
 
-
 export default function Hero() {
   return (
     <section className="relative bg-black text-white min-h-screen flex items-center">
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/70 z-10" />
-      <Image src="/lift-gym-hero.jpg" alt="Hero Image" fill className="object-cover">
-
-      </Image>
+      <Image
+        src="/lift-gym-hero.jpg"
+        alt="Hero Image"
+        fill
+        className="object-cover"
+      ></Image>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-4xl">
@@ -58,7 +60,7 @@ export default function Hero() {
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
             Transform Your
-            <span className="block text-white">Fitness Journey</span>
+            <span className="block text-white">Gym Journey</span>
           </motion.h1>
 
           <motion.p
@@ -77,21 +79,23 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <motion.button
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-gray-100 transition-colors"
             >
-              <span>Start Your Journey</span>
+              <span>Get in Touch</span>
               <ArrowRight className="h-5 w-5" />
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="/about"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-colors"
             >
-              Take a Tour
-            </motion.button>
+              About Us
+            </motion.a>
           </motion.div>
         </div>
       </div>

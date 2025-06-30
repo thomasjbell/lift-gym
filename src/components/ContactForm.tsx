@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Share2 } from "lucide-react";
 import { useState } from "react";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -18,7 +19,9 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const {
     register,
@@ -31,7 +34,7 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       const response = await fetch("/api/contact", {
@@ -41,13 +44,13 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         reset();
       } else {
         throw new Error("Failed to send message");
       }
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -67,7 +70,8 @@ export default function ContactForm() {
               Get in Touch
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Ready to start your fitness journey? We're here to help you every step of the way.
+              Ready to start your gym journey? We're here to help you every step
+              of the way.
             </p>
 
             <div className="space-y-6">
@@ -82,7 +86,10 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold">Visit Us</h4>
-                  <p className="text-gray-300">123 Fitness St, Gym City</p>
+                  <p className="text-gray-300">
+                    LIFT GYM, Falcon Drive, Old Stratford, <br /> Milton Keynes
+                    MK19 6FG
+                  </p>
                 </div>
               </motion.div>
 
@@ -93,11 +100,43 @@ export default function ContactForm() {
                 className="flex items-center space-x-4"
               >
                 <div className="bg-white/10 p-3 rounded-lg">
-                  <Phone className="h-6 w-6 text-white" />
+                  <Share2 className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold">Call Us</h4>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <h4 className="text-white font-semibold">
+                    Check Out Our Socials
+                  </h4>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-1"
+                  >
+                    <div className="flex space-x-4">
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        href="https://www.facebook.com/liftgymmk"
+                        className="text-gray-400 hover:text-gray-200"
+                      >
+                        <FaFacebook className="h-6 w-6" />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        href="https://www.instagram.com/liftgymmk"
+                        className="text-gray-400 hover:text-gray-200"
+                      >
+                        <FaInstagram className="h-6 w-6" />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        href="https://www.youtube.com/channel/UCr7WJ0IKpj8GuKI8mBdDIbQ"
+                        className="text-gray-400 hover:text-gray-200"
+                      >
+                        <FaYoutube className="h-6 w-6" />
+                      </motion.a>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -112,7 +151,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold">Email Us</h4>
-                  <p className="text-gray-300">hello@liftgym.com</p>
+                  <a href="mailto:liftgymmk@gmail.com" className="text-gray-300 hover:text-gray-200">liftgymmk@gmail.com</a>
                 </div>
               </motion.div>
             </div>
@@ -134,7 +173,9 @@ export default function ContactForm() {
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
                   />
                   {errors.name && (
-                    <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+                    <p className="text-red-400 text-sm mt-1">
+                      {errors.name.message}
+                    </p>
                   )}
                 </div>
 
@@ -146,7 +187,9 @@ export default function ContactForm() {
                     className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
                   />
                   {errors.email && (
-                    <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                    <p className="text-red-400 text-sm mt-1">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
               </div>
@@ -166,7 +209,9 @@ export default function ContactForm() {
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
                 />
                 {errors.subject && (
-                  <p className="text-red-400 text-sm mt-1">{errors.subject.message}</p>
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.subject.message}
+                  </p>
                 )}
               </div>
 
@@ -178,7 +223,9 @@ export default function ContactForm() {
                   className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors resize-none"
                 />
                 {errors.message && (
-                  <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.message.message}
+                  </p>
                 )}
               </div>
 
@@ -199,7 +246,7 @@ export default function ContactForm() {
                 )}
               </motion.button>
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -209,7 +256,7 @@ export default function ContactForm() {
                 </motion.p>
               )}
 
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}

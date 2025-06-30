@@ -10,6 +10,7 @@ import {
   Twitter,
 } from "lucide-react";
 import Link from "next/link";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -24,7 +25,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }} className="md:col-span-2"
           >
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Dumbbell className="h-8 w-8" />
+            
               <span className="text-2xl font-bold">Lift Gym</span>
             </Link>
             <p className="text-gray-300 mb-4">
@@ -34,24 +35,24 @@ export default function Footer() {
             <div className="flex space-x-4">
               <motion.a
                 whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-white"
+                href="https://www.facebook.com/liftgymmk"
+                className="text-gray-400 hover:text-gray-200"
               >
-                <Facebook className="h-5 w-5" />
+                <FaFacebook className="h-6 w-6" />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-white"
+                href="https://www.instagram.com/liftgymmk"
+                className="text-gray-400 hover:text-gray-200"
               >
-                <Instagram className="h-5 w-5" />
+                <FaInstagram className="h-6 w-6" />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-gray-400 hover:text-white"
+                href="https://www.youtube.com/channel/UCr7WJ0IKpj8GuKI8mBdDIbQ"
+                className="text-gray-400 hover:text-gray-200"
               >
-                <Twitter className="h-5 w-5" />
+                <FaYoutube className="h-6 w-6" />
               </motion.a>
             </div>
           </motion.div>
@@ -68,16 +69,16 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-gray-300">
-                <MapPin className="h-4 w-4" />
-                <span>123 Fitness St, Gym City</span>
+                <MapPin className="h-7 w-7" />
+                <span>Falcon Drive, Old Stratford, Milton Keynes, MK19 6FG</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-300">
-                <Phone className="h-4 w-4" />
-                <span>+1 (555) 123-4567</span>
-              </div>
+          
               <div className="flex items-center space-x-2 text-gray-300">
                 <Mail className="h-4 w-4" />
-                <span>hello@liftgym.com</span>
+                <span>
+                  <a href="mailto:liftgymmk@gmail.com" className="text-gray-300 hover:text-white transition-colors">liftgymmk@gmail.com</a> 
+                  
+                  </span>
               </div>
             </div>
           </motion.div>
@@ -99,44 +100,49 @@ export default function Footer() {
                   Home
                 </Link>
               </li>
+              
               <li>
                 <Link
-                  href="/equipment"
+                  href="/about"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Equipment
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/contact"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Classes
+                  Contact
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="faq"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Membership
+                  FAQ's
                 </Link>
               </li>
             </ul>
           </motion.div>
         </div>
 
-        
+       
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+          className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400"
         >
-          <p>&copy; 2025 Lift Gym. All rights reserved.</p>
+          <div className="grid grid-cols-2 ">
+            <div><a href="/privacy-policy" className="text-gray-400 hover:text-gray-300 transition-colors">Privacy Policy</a></div>
+            <div><a href=""></a></div>
+          </div>
+          <p className="mt-4">&copy; 2025 Lift Gym. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
