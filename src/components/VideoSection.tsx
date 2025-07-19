@@ -14,7 +14,7 @@ export default function VideoSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Take a Look Around Lift Gym
+            Take a Look Around
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Get a glimpse of our state-of-the-art facility and supportive

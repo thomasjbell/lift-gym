@@ -122,7 +122,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6">
+            <div className="px-6 py-3">
               <div className="text-gray-300 leading-relaxed">
                 {typeof answer === "string" ? <p>{answer}</p> : answer}
               </div>

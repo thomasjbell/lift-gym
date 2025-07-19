@@ -5,9 +5,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Facebook,
-  Instagram,
-  Twitter,
 } from "lucide-react";
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
@@ -119,7 +116,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="faq"
+                  href="/faqs"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   FAQ's
@@ -139,10 +136,11 @@ export default function Footer() {
           className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400"
         >
           <div className="grid grid-cols-2 ">
-            <div><a href="/privacy-policy" className="text-gray-400 hover:text-gray-300 transition-colors">Privacy Policy</a></div>
+            
             <div><a href=""></a></div>
           </div>
-          <p className="mt-4">&copy; 2025 Lift Gym. All rights reserved.</p>
+          <p className="mt-4 mb-2">&copy; 2025 Lift Gym. All rights reserved.</p>
+          <div><a href="/privacy-policy" className="text-gray-500 hover:text-gray-400 transition-colors">Privacy Policy</a></div>
         </motion.div>
       </div>
     </footer>

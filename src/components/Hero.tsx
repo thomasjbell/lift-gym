@@ -2,10 +2,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Heart, Smile } from "lucide-react";
 import Image from "next/image";
+import AnimatedButton from "./AnimatedButton";
 
 export default function Hero() {
   return (
-    <section className="relative bg-black text-white min-h-screen flex items-center">
+    <section className="relative bg-black text-white min-h-screen flex items-center justify-center mx-auto">
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/70 z-10" />
       <Image
         src="/lift-gym-hero.jpg"
@@ -14,15 +15,15 @@ export default function Hero() {
         className="object-cover"
       ></Image>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="max-w-4xl">
+      <div className="mx-auto z-20">
+        <div className="">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-            <div className="flex items-center space-x-6 mb-2">
+            <div className="flex items-center max-w-2xl space-x-16 mx-auto mb-2 justify-center">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -57,17 +58,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl font-bold mb-6 leading-tight justify-center text-center"
           >
-            Transform Your
-            <span className="block text-white">Gym Journey</span>
+            Chill out, let&apos;s lift.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl"
+            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl text-center mx-auto"
           >
             Experience a personal, supportive, and friendly environment where
             your fitness goals become reality.
@@ -77,25 +77,21 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex space-x-4 mx-auto justify-center"
           >
-            <motion.a
+            <AnimatedButton
               href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-gray-100 transition-colors"
+              variant="primary"
+              size="lg"
+              icon={ArrowRight}
+              className="justify-right"
             >
-              <span>Get in Touch</span>
-              <ArrowRight className="h-5 w-5" />
-            </motion.a>
-            <motion.a
-              href="/about"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-colors"
-            >
+              Get in Touch
+            </AnimatedButton>
+
+            <AnimatedButton href="/about" variant="secondary" size="lg" className="justify-left">
               About Us
-            </motion.a>
+            </AnimatedButton>
           </motion.div>
         </div>
       </div>

@@ -4,24 +4,24 @@ import { useState } from "react";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    src: "/lift-gym-1.png",
     alt: "Modern gym equipment",
     title: "State-of-the-art Equipment",
   },
   {
-    src: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    src: "https://placehold.co/600x400",
     alt: "Personal training session",
-    title: "Personal Training",
+    title: "Gym Image Here",
   },
   {
-    src: "https://images.unsplash.com/photo-1593476087123-36d1de271f08?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    src: "https://placehold.co/600x400",
     alt: "Group fitness class",
-    title: "Group Classes",
+    title: "Gym Image Here",
   },
   {
-    src: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    src: "https://placehold.co/600x400",
     alt: "Cardio area",
-    title: "Cardio Zone",
+    title: "Gym Image Here",
   },
 ];
 

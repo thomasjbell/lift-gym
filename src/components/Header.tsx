@@ -1,62 +1,95 @@
 "use client";
 import { motion } from "framer-motion";
-import { Dumbbell, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 
+// Animated Link Component
+const AnimatedLink = ({ 
+  href, 
+  children, 
+  className = "" 
+}: { 
+  href: string; 
+  children: React.ReactNode; 
+  className?: string; 
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <Link 
+      href={href} 
+      className={`relative group ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span className="relative inline-block">
+        {children}
+        <motion.div
+          className="absolute bottom-0 left-0 h-0.5 bg-white"
+          initial={{ width: 0 }}
+          animate={{ width: isHovered ? "100%" : 0 }}
+          transition={{ 
+            duration: 0.25, 
+            ease: "easeInOut" 
+          }}
+        />
+      </span>
+    </Link>
+  );
+};
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50"
+      className="bg-black/60 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.jpg" alt="Logo" width={50} height={50}></Image>
-            <span className="text-2xl font-bold text-white">Lift Gym</span>
-           
+            <Image src="/logo.jpg" alt="Logo" width={60} height={60} />
           </Link>
-
+          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
+            <AnimatedLink
               href="/"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white py-2"
             >
               Home
-            </Link>
-            <Link
+            </AnimatedLink>
+            <AnimatedLink
               href="/about"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white py-2"
             >
               About Us
-            </Link>
-            <Link
+            </AnimatedLink>
+            <AnimatedLink
               href="/equipment"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white py-2"
             >
               Equipment
-            </Link>
-            <Link
+            </AnimatedLink>
+            <AnimatedLink
               href="/contact"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white py-2"
             >
               Contact
-            </Link>
-            <Link
+            </AnimatedLink>
+            <AnimatedLink
               href="/faqs"
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white py-2"
             >
               FAQ's
-            </Link>
+            </AnimatedLink>
           </nav>
-
+          
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -69,7 +102,7 @@ export default function Header() {
             )}
           </button>
         </div>
-
+        
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <motion.nav
@@ -79,24 +112,24 @@ export default function Header() {
             className="md:hidden py-4 border-t border-gray-800"
           >
             <div className="flex flex-col space-y-4">
-              <Link
+              <AnimatedLink
                 href="/"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-white py-2"
               >
                 Home
-              </Link>
-              <Link
+              </AnimatedLink>
+              <AnimatedLink
                 href="/equipment"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-white py-2"
               >
                 Equipment
-              </Link>
-              <Link
+              </AnimatedLink>
+              <AnimatedLink
                 href="/contact"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-white py-2"
               >
                 Contact
-              </Link>
+              </AnimatedLink>
             </div>
           </motion.nav>
         )}
