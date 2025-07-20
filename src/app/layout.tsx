@@ -3,7 +3,6 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import SocialSidebar from '@/components/SocialSidebar'
-import SocialTooltip from '@/components/SocialTooltip'
 
 export const metadata: Metadata = {
   title: 'Lift Gym - Personal, Supportive, Friendly',
@@ -20,7 +19,7 @@ export default function RootLayout({
       <body className='bg-black'>
         <Header />
         <SocialSidebar />
-        <SocialTooltip />
+        
         <main>{children}</main>
         <Footer />
       </body>

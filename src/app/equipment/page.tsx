@@ -71,7 +71,7 @@ export default function EquipmentPage() {
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-gradient-to-r from-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

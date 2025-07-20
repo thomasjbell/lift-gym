@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 import { useState } from "react";
+import AnimatedButton from "./AnimatedButton";
 
 const faqData = [
   {
@@ -34,7 +35,7 @@ const faqData = [
         Simply book an appointment via our contact page or email directly{" "}
         <a
           href="mailto:liftgymmk@gmail.com"
-          className="text-white hover:text-gray-100 underline underline-offset-2 transition-colors"
+          className="text-white hover:text-gray-100 underline underline-offset-2 transition-colors break-all"
         >
           liftgymmk@gmail.com
         </a>{" "}
@@ -58,7 +59,7 @@ const faqData = [
       "IF you already have good gym experience, yes. Those that have not used Gym equipment before would need a full induction so free trials would not be available. Trial sessions must be booked in advance.",
   },
   {
-    question: `I came to look around but counldn't get in?`,
+    question: `I came to look around but couldn't get in?`,
     answer:
       "We have a Fob entry system, which only members and staff have access to. If you would like to look around the Gym / want to have a chat to see if our Gym is right for you, please book ahead. We are by appointment only.",
   },
@@ -69,7 +70,7 @@ const faqData = [
   {
     question: `Do you do "pay as you go" rates?`,
     answer:
-      "No. We are membership only. Strictly no day passes or 1 month deals. ",
+      "No. We are membership only. Strictly no day passes or 1 month deals.",
   },
   {
     question: "Is this a weightlifting Gym?",
@@ -92,23 +93,26 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="bg-gray-900 rounded-2xl overflow-hidden"
+      className="bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden"
     >
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-800 transition-colors"
-        whileHover={"bg-gray-800"}
+        className="w-full p-4 sm:p-6 text-left flex items-start sm:items-center justify-between hover:bg-gray-800 transition-colors touch-manipulation"
+        whileHover={{ backgroundColor: "rgb(31 41 55)" }}
+        whileTap={{ scale: 0.98 }}
       >
-        <h3 className="text-lg font-semibold text-white pr-4">{question}</h3>
+        <h3 className="text-base sm:text-lg font-semibold text-white pr-3 sm:pr-4 leading-relaxed">
+          {question}
+        </h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="flex-shrink-0"
+          className="flex-shrink-0 mt-1 sm:mt-0"
         >
           {isOpen ? (
-            <Minus className="h-5 w-5 text-white" />
+            <Minus className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           ) : (
-            <Plus className="h-5 w-5 text-white" />
+            <Plus className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
           )}
         </motion.div>
       </motion.button>
@@ -122,8 +126,8 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 py-3">
-              <div className="text-gray-300 leading-relaxed">
+            <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-2 sm:pt-3">
+              <div className="text-gray-300 leading-relaxed text-sm sm:text-base">
                 {typeof answer === "string" ? <p>{answer}</p> : answer}
               </div>
             </div>
@@ -136,9 +140,9 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
 
 export default function FAQ() {
   return (
-    <section className="py-20 bg-black">
+    <section className="py-12 sm:py-16 lg:py-20 bg-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqData.map((faq, index) => (
             <FAQItem
               key={index}
@@ -154,15 +158,16 @@ export default function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <h3 className="text-2xl font-bold text-white mb-4">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
             Still have questions?
           </h3>
-          <p className="text-gray-300 mb-8">
+          <p className="text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base px-4">
             Our friendly team is here to help. Get in touch and we'll answer any
             questions you might have.
           </p>
+          
           <motion.a
             href="/contact"
             whileHover={{ scale: 1.025 }}
